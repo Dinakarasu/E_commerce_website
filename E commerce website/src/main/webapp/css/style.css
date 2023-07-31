@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Raleway',sans-serif;
+    color: #fff;
+    line-height: 1.8;
+    background: url(img/nature.jpg);
+    background-position: center;
+    background-size: cover;
+}
+a{
+    text-decoration: none;
+}
+#container{
+  margin: 30px auto;
+  max-width: 400px;
+  padding: 20px;
+}
+.form-wrap{
+    background: #fff;
+    background-origin:content-box;
+    padding: 15px 25px;
+    color: #333;
+    border-radius: 10px;
+}
+.form-wrap h1{
+    line-height: 1.1;
+}
+.form-wrap h1,
+.form-wrap p{
+    color: #333;
+    text-align: center;
+}
+.form-wrap .form-group{
+    margin-top: 15px;
+}
+.form-wrap .form-group label{
+    display: block;
+    color: #333;
+}
+.form-wrap .form-group input{
+    width: 100%;
+    padding: 10px;
+    border: #ddd 1px solid;
+    border-radius: 5px;
+}
+.form-wrap button{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: medium;
+}
+.form-wrap button:hover{
+    background:linear-gradient(45deg, yellow, green, blue, red);
+}
+.form-wrap .bottom-text{
+    font-size: 13px;
+    margin-top: 20px;
+}
+footer{
+    text-align: center;
+    margin-top: 10px;
+}
+footer a {
+    color: #d5ee30;
+    font-style: italic;
+}

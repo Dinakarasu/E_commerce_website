@@ -34,7 +34,7 @@ public class SellerValidateOtp extends HttpServlet {
 			dispatcher.forward(request, response);			
 		}
 		else{
-			out.print("Wrong otp try again!!! "+"\t"+" Click back button and refresh get new OTP");
+			out.print("Wrong otp try again!!! ----->     Click back button and then after refresh the enter otp page you get new OTP");
 			request.setAttribute("message","wrong otp");
 		}
 	}

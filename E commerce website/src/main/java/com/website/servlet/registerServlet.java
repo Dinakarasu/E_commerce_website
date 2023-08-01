@@ -1,5 +1,7 @@
 package com.website.servlet;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,10 +31,14 @@ public class registerServlet extends HttpServlet {
 		System.out.println(email);
 		registerRepository repo= new registerRepository();
 		boolean isInserted= repo.insertIntoreg( firstname, lastname,email, contact,password);
+		response.setContentType("text/html;charset=UTF-8");
+		try(PrintWriter out=response.getWriter()){
 		if(isInserted)
 			response.sendRedirect("login");
 		else
-			response.sendRedirect("error");	
+			response.sendRedirect("error");
+		out.print("Error please try again to register !!!");
+		}
 	}
 }
 

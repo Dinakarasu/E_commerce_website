@@ -1,8 +1,8 @@
 package com.website.passwordreset.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 import javax.servlet.RequestDispatcher;
@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import com.website.jdbc.JdbcConnection;
 
-
 /**
  * Servlet implementation class NewPassword
  */
@@ -23,15 +22,16 @@ import com.website.jdbc.JdbcConnection;
 public class NewPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String newPassword = request.getParameter("password");
 		String confPassword = request.getParameter("password2");
 		RequestDispatcher dispatcher = null;
+		
 		if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
-
-			try {
+			response.setContentType("text/html;charset=UTF-8");
+			
+			try(PrintWriter out=response.getWriter()) {
 				Connection con= JdbcConnection.dbGetconnection();
 				PreparedStatement pst = con.prepareStatement("update reg set password = ? where email = ? ");
 				pst.setString(1, newPassword);
@@ -39,11 +39,10 @@ public class NewPassword extends HttpServlet {
 				int rowCount = pst.executeUpdate();
 				if (rowCount > 0) {
 					request.setAttribute("status", "resetSuccess");
-					System.out.println("changed");
 					dispatcher = request.getRequestDispatcher("login.jsp");
 				} else {
 					request.setAttribute("status", "resetFailed");
-					System.out.println("failed");
+					out.print("failed try again!!!");
 				}
 				dispatcher.forward(request, response);
 			} catch (Exception e) {

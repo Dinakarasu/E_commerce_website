@@ -2,8 +2,6 @@ package com.website.seller.passwordreset.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,36 +18,25 @@ import javax.servlet.http.HttpSession;
 public class SellerValidateOtp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
-	{
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int value=Integer.parseInt(request.getParameter("otp"));
 		HttpSession session=request.getSession();
 		int otp=(int)session.getAttribute("otp");
 		
-		
-		
 		RequestDispatcher dispatcher=null;
 		
-		
-		if (value==otp) 
-		{
-			
+		response.setContentType("text/html;charset=UTF-8");
+		try (PrintWriter out=response.getWriter()){
+		if (value==otp) {
 				request.setAttribute("email", request.getParameter("email"));
 				request.setAttribute("status", "success");
 			  dispatcher=request.getRequestDispatcher("sellerreset.jsp");
-			dispatcher.forward(request, response);
-			
+			dispatcher.forward(request, response);			
 		}
-		else
-		{
+		else{
+			out.print("Wrong otp try again!!! "+"\t"+" Click back button and refresh get new OTP");
 			request.setAttribute("message","wrong otp");
-			
-		   dispatcher=request.getRequestDispatcher("sellerotp.jsp");
-			dispatcher.forward(request, response);
-		
 		}
-		
 	}
-
+	}
 }

@@ -5,15 +5,25 @@ public class Order extends ProductDetails {
 	private int uId;
 	private int quantity;
 	private String date;
+	private String image;
 	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public Order() {} //default constructor
 
-	public Order(int orderId, int uId, int quantity, String date) {
+	public Order(int orderId, int uId, int quantity, String date, String image) {
 		super();
 		this.orderId = orderId;
 		this.uId = uId;
 		this.quantity = quantity;
 		this.date = date;
+		this.image = image;
 	}
 
 	public Order(int uId, int quantity, String date) {
@@ -57,7 +67,7 @@ public class Order extends ProductDetails {
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", uId=" + uId + ", quantity=" + quantity + ", date=" + date + "]";
+		return "Order [orderId=" + orderId + ", uId=" + uId + ", image=" +image+ ", quantity=" + quantity + ", date=" + date + "]";
 	}
 	
 	

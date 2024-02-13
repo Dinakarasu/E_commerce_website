@@ -12,7 +12,26 @@ public class ProductDetails {
 	private String status;
 	private int uId;
 	private String date;
+	private String address;
 	
+	
+	
+	public ProductDetails(String name, String description, double price, String image, String category, int rating,
+			String stars, String status, int uId, String date, String address) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.image = image;
+		this.category = category;
+		this.rating = rating;
+		this.stars = stars;
+		this.status = status;
+		this.uId = uId;
+		this.date = date;
+		this.address = address;
+	}
+
 	public String getStatus() {
 		return status;
 	}
@@ -92,9 +111,17 @@ public class ProductDetails {
 		this.date = date;
 	}
 
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductDetails [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", image=" + image + ", rating=" + rating+", status=" + status  + ", category=" + category +", uId=" + uId +", date=" + date + "]";
+				+ ", image=" + image + ", rating=" + rating+", status=" + status  + ", category=" + category +", uId=" + uId +", address=" + address +", date=" + date + "]";
 	}
 }

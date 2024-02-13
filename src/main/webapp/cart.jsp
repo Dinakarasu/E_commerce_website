@@ -47,7 +47,8 @@ if (cart_list != null) {
     <div class="row1 row-2">
             <table>            
 				<tr>
-					<th scope="col">Name</th>
+					<th scope="col">Product Image</th>
+					<th scope="col">Product Name</th>
 					<th scope="col">Category</th>
 					<th scope="col">Price</th>
 					<th scope="col">Quantity</th>
@@ -59,6 +60,7 @@ if (cart_list != null) {
 					for (Cart c : cartProduct) {
 				%>
 				<tr>
+					<td><img src="product_images/<%=c.getImage()%>" style="width:50px; height:50px"></td>					
 					<td><%=c.getName()%></td>
 					<td><%=c.getCategory()%></td>
 					<td><i class="fa fa-inr"></i><%=dcf.format(c.getPrice())%></td>

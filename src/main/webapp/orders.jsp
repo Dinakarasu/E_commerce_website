@@ -46,7 +46,8 @@ if (cart_list != null) {
             <table>
 				<tr>
 					<th scope="col">Date | Time</th>
-					<th scope="col">Name</th>
+					<th scope="col">Product Image</th>
+					<th scope="col">Product Name</th>
 					<th scope="col">Category</th>
 					<th scope="col">Quantity</th>
 					<th scope="col">Price</th>
@@ -58,6 +59,7 @@ if (cart_list != null) {
 				%>
 				<tr>
 					<td><%=o.getDate()%></td>
+					<td><img src="product_images/<%=o.getImage()%>" style="width:50px; height:50px"></td>					
 					<td><%=o.getName()%></td>
 					<td><%=o.getCategory()%></td>
 					<td><%=o.getQuantity()%></td>

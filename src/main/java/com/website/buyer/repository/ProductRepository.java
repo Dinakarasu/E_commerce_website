@@ -58,6 +58,7 @@ public List<Cart> getCartProducts(ArrayList<Cart> cartList){
                     Cart row = new Cart();
                     row.setId(result.getInt("id"));
                     row.setName(result.getString("productName"));
+                    row.setImage(result.getString("image"));
                     row.setCategory(result.getString("category"));
                     row.setPrice(result.getDouble("price")*item.getQuantity());
                     row.setQuantity(item.getQuantity());

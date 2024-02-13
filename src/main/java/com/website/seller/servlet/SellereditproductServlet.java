@@ -16,21 +16,21 @@ import javax.servlet.http.Part;
 
 import com.website.jdbc.JdbcConnection;
 import com.website.pojo.*;
-import com.website.seller.repository.SellerAddProductRepository;
+import com.website.seller.repository.SellerProductRepository;
 
 /**
  * Servlet implementation class SignUpServlet
  */
-@WebServlet("/Addproduct")
+@WebServlet("/editproduct")
 @MultipartConfig
-public class SelleraddServlet extends HttpServlet {
+public class SellereditproductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public SelleraddServlet() {
+    public SellereditproductServlet() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("complete the process of seller add product");
-		request.getRequestDispatcher("addproduct.jsp").forward(request, response);
+		request.getRequestDispatcher("edit_product.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
@@ -43,51 +43,40 @@ public class SelleraddServlet extends HttpServlet {
 
             Selleruser auth1 = (Selleruser) request.getSession().getAttribute("auth1");
             
-            
+	        int id=Integer.parseInt(request.getParameter("id"));		
 			if(auth1 != null) {
 			String productname=request.getParameter("productname");
-			String image=request.getParameter("image");
 			String price=request.getParameter("price");
-			String category=request.getParameter("category");
 			String description=request.getParameter("description");
 			String address=request.getParameter("address");
 			String check=request.getParameter("check");
-			Part part = request.getPart("image");
-			String filename = part.getSubmittedFileName();
 			
 			String status = request.getParameter("status");
 			
-			int add_userid = auth1.getId();
+			//int add_userid = auth1.getId();
 			String add_date = (formatter.format(date)+" "+formatter1.format(date));
 			
 			System.out.println("add product!!!");
 			
 			
 			if(check!=null) {
-				SellerAddProductRepository repo= new SellerAddProductRepository();
-			boolean p = repo.insertIntoaddpro(productname, image,price,description, category, address,status,add_userid, add_date);
-			//response.setContentType("text/html;charset=UTF-8");
-			System.out.println("seller product!!!");
-			
-			String path = getServletContext().getRealPath("")+"productImages";
-			
-			File f = new File(path);
-			part.write(path + File.separator + filename);
+				SellerProductRepository repo= new SellerProductRepository();
+			boolean p = repo.updateproduct(id,productname,price,description, address,status,add_date);
+			System.out.println("seller update!!!");
 			
 			if(p) {
-				response.sendRedirect("addproduct.jsp");
-				session.setAttribute("successMsg", "Add successfully...");			
-			System.out.println("seller add product!!!");
+				response.sendRedirect("allproduct.jsp");
+				session.setAttribute("successMsg", "Updated successfully...");			
+			System.out.println("seller update product!!!");
 			}else {
-				response.sendRedirect("addproduct.jsp");	
+				response.sendRedirect("edit_product.jsp");	
 				session.setAttribute("failedMsg", "Something wrong on server...");
-				System.out.println("seller not add product!!!");
-		//	out.print("Error please try again to register !!!");
+				System.out.println("seller not update product!!!");
 		}
 			}else {
-			response.sendRedirect("addproduct.jsp");
-		 session.setAttribute("failedMsg", "please check Agree & terms condition !!!");	
-			System.out.println("please check Agree and terms condition !!! ");
+			response.sendRedirect("edit_product.jsp");
+		 session.setAttribute("failedMsg", "please checkbox !!!");	
+			System.out.println("please select checkbox !!! ");
 			}
 			}else {
 	        	response.sendRedirect("sellerlogin.jsp");
@@ -95,7 +84,7 @@ public class SelleraddServlet extends HttpServlet {
 	        }
 			}catch(Exception e) {
 				e.printStackTrace();
-				System.out.println("Error add pro!!");
+				System.out.println("Error edit update!!");
 			}
 	}
 }

@@ -57,6 +57,7 @@ public class OrderRepo {
 				order.setOrderId(rs.getInt("order_id"));
 				order.setId(productId);
 				order.setName(product.getName());
+				order.setImage(product.getImage());
 				order.setCategory(product.getCategory());
 				order.setPrice(product.getPrice() * rs.getInt("order_quantity"));
 				order.setQuantity(rs.getInt("order_quantity"));

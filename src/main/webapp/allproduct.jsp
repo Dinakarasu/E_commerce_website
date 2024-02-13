@@ -1,7 +1,6 @@
 <%@page import="java.util.*"%>
 <%@page import="com.website.pojo.*" %>
 <%@page import="com.website.seller.repository.*" %>
-<%@page import="com.website.buyer.repository.*" %>
 
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="com.website.jdbc.JdbcConnection" %>
@@ -16,10 +15,8 @@ if (auth1 != null) {
 	} else {
 		response.sendRedirect("sellerlogin.jsp");
 	}
-ProductRepository pd = new ProductRepository(JdbcConnection.dbGetconnection());
-List<ProductDetails> products = pd.getAllProducts();
 %>
-<%System.out.println("add product Login by -- "+auth1); %>
+<%System.out.println("all product Login by -- "+auth1); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,32 +35,45 @@ List<ProductDetails> products = pd.getAllProducts();
 <br>
  <h1>All Products</h1>
     <div class="row1 row-2">
+    <!-- message on screen -->
+            <c:if test="${not empty successMsg }">
+               <p class="text-center text-safer">${successMsg}</p>
+               <c:remove var="successMsg" scope="session" />            
+            </c:if>
+            <c:if test="${not empty failedMsg }">
+               <p class="text-center text-danger">${failedMsg}</p>
+               <c:remove var="failedMsg" scope="session" />            
+            </c:if>
 
             <table>            
+					<th scope="col">id</th>
 					<th scope="col">Image</th>
 					<th scope="col">Product Name</th>
 					<th scope="col">Category</th>
 					<th scope="col">Price</th>
 					<th scope="col">status</th>
+					<th scope="col">Product Added Date and time</th>
 					<th scope="col">Edit</th>
        			<%
-			if (!products.isEmpty()) {
-				for (ProductDetails p : products) {
+       			SellerProductRepository pr = new SellerProductRepository(JdbcConnection.dbGetconnection());
+       			List<ProductDetails> sellerproducts = pr.getAllproduct();
+				for (ProductDetails p : sellerproducts) {
 			%>	
 			<tr>
-					<td><%=p.getImage()%></td>
+					<td><%=p.getId()%></td>					
+					<td><img src="product_images/<%=p.getImage()%>" style="width:50px; height:50px"></td>
 					<td><%=p.getName()%></td>
 					<td><%=p.getCategory()%></td>
 					<td><%=p.getPrice()%></td>
 					<td><%=p.getStatus()%></td>
-			 <%
-			}
-			}
-			%>
+					<td><%=p.getDate()%></td>
 					<td>
-					<a href="" class="btn1 btn-primary btn-e">Edit</a>
+					<a href="edit_product.jsp?id=<%=p.getId()%>" class="btn1 btn-primary btn-e">Edit</a>
 					<a href="" class="btn1 btn-primary btn-sm">Delete</a>
 					</td>
+			 <%
+			}
+			%>
 				</tr>
 
 		</table>

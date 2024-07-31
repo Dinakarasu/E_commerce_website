@@ -689,6 +689,10 @@ a{
     border: #ddd 1px solid;
     border-radius: 5px;
 }
+p.text-center.text-safer {
+        padding: 4px;
+        margin: 10px;
+}
 .form-wrap button {
     display: block;
     width: 64%;

@@ -43,17 +43,15 @@ public class SellereditproductServlet extends HttpServlet {
 
             Selleruser auth1 = (Selleruser) request.getSession().getAttribute("auth1");
             
-	        int id=Integer.parseInt(request.getParameter("id"));		
+	        //int id=Integer.parseInt(request.getParameter("id"));		
 			if(auth1 != null) {
 			String productname=request.getParameter("productname");
 			String price=request.getParameter("price");
 			String description=request.getParameter("description");
 			String address=request.getParameter("address");
 			String check=request.getParameter("check");
-			
 			String status = request.getParameter("status");
 			
-			//int add_userid = auth1.getId();
 			String add_date = (formatter.format(date)+" "+formatter1.format(date));
 			
 			System.out.println("add product!!!");
@@ -61,7 +59,7 @@ public class SellereditproductServlet extends HttpServlet {
 			
 			if(check!=null) {
 				SellerProductRepository repo= new SellerProductRepository();
-			boolean p = repo.updateproduct(id,productname,price,description, address,status,add_date);
+			boolean p = repo.updateproduct(productname,price,description, address,status,add_date);
 			System.out.println("seller update!!!");
 			
 			if(p) {

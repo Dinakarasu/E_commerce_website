@@ -3,6 +3,8 @@
 <%@page import="com.website.buyer.repository.*" %>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="com.website.jdbc.JdbcConnection" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -58,8 +60,13 @@ if (cart_list != null) {
 					for (Order o : orders) {
 				%>
 				<tr>
+				            <!-- message on screen -->
+            <c:if test="${not empty NoorderMsg }">
+               <p class="text-center text-safer">${NoorderMsg}</p>
+               <c:remove var="NoorderMsg" scope="session" />            
+            </c:if>
 					<td><%=o.getDate()%></td>
-					<td><img src="product_images/<%=o.getImage()%>" style="width:50px; height:50px"></td>					
+					<td><img src="images/<%=o.getImage()%>" style="width:50px; height:50px"></td>					
 					<td><%=o.getName()%></td>
 					<td><%=o.getCategory()%></td>
 					<td><%=o.getQuantity()%></td>

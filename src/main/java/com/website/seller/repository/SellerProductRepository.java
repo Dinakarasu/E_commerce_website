@@ -107,21 +107,20 @@ public class SellerProductRepository{
 		}
 		return p;
 	}
-	public boolean updateproduct(int id,String productname, String price, String description, String address,
+	public boolean updateproduct(String productname, String price, String description, String address,
 			String status, String add_date) {
 		
 		boolean f =false;
 		try {
 			Connection con= JdbcConnection.dbGetconnection();
-			String insertQuery= "update products set productname=?, price=?, description=? , address=?,status=?,add_date=? where id=? ";
-			PreparedStatement ps= con.prepareStatement(insertQuery);
+			String updateQuery= "update products set productname=?, price=?, description=? , address=?,status=?,add_date=? where id=? ";
+			PreparedStatement ps= con.prepareStatement(updateQuery);
 			ps.setString(1, productname);
 			ps.setString(2, price);
 			ps.setString(3, description);
 			ps.setString(4, address);
 			ps.setString(5, status);
 			ps.setString(6, add_date);
-			ps.setInt(7,id);
 			int result =ps.executeUpdate();
 			System.out.print("seller update repo"+result);
 			if (result ==1) {
@@ -144,6 +143,5 @@ public class SellerProductRepository{
 			e.printStackTrace();
 		}
 		return f;
-		
 	}
 }

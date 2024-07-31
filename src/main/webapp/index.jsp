@@ -22,7 +22,7 @@ if (cart_list != null) {
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website | home</title>
+    <title>Website | Home</title>
     <%@include file="includes/header.jsp"%>    
 </head>
 <body>
@@ -66,7 +66,7 @@ if (cart_list != null) {
 				for (ProductDetails p : products) {
 			%>
         <div class="col-4">
-            <img src="product_images/<%=p.getImage()%>">
+            <img src="images/<%=p.getImage()%>">
             <h4> Product Name : <%=p.getName()%></h4>
             <h6 class="category">Category : <%=p.getCategory()%></h6>
                       <div><%=p.getStars()%></div>

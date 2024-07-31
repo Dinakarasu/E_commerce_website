@@ -13,11 +13,12 @@ public class ProductDetails {
 	private int uId;
 	private String date;
 	private String address;
+	private int quantity;
 	
 	
 	
 	public ProductDetails(String name, String description, double price, String image, String category, int rating,
-			String stars, String status, int uId, String date, String address) {
+			String stars, String status, int uId, String date, String address, int quantity) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -30,6 +31,7 @@ public class ProductDetails {
 		this.uId = uId;
 		this.date = date;
 		this.address = address;
+		this.quantity = quantity;
 	}
 
 	public String getStatus() {
@@ -122,6 +124,14 @@ public class ProductDetails {
 	@Override
 	public String toString() {
 		return "ProductDetails [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", image=" + image + ", rating=" + rating+", status=" + status  + ", category=" + category +", uId=" + uId +", address=" + address +", date=" + date + "]";
+				+ ", image=" + image + ", rating=" + rating+", status=" + status  + ", category=" + category +", uId=" + uId +", address=" + address +",quantity=" + quantity+" , date=" + date + "]";
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 }

@@ -61,7 +61,7 @@ if (auth1 != null) {
 			%>	
 			<tr>
 					<td><%=p.getId()%></td>					
-					<td><img src="product_images/<%=p.getImage()%>" style="width:50px; height:50px"></td>
+					<td><img src="images/<%=p.getImage()%>" style="width:50px; height:50px"></td>
 					<td><%=p.getName()%></td>
 					<td><%=p.getCategory()%></td>
 					<td><%=p.getPrice()%></td>

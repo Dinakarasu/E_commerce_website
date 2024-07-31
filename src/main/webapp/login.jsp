@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    required title=" use 8 character minimum,1-special character(!@#$%^&*()),1-Capital letter(A-Z),1-Number(0-9)"/>
+                    required title=" use 8 character minimum ,1-special character(!@#$%^&*()),1-Capital letter(A-Z),1-Number(0-9)"/>
                 </div>
                 <button type="submit" class="btn" onclick="my()">Login</button>
                 <p class="bottom-text"><a class="forget" href="forgetpassword.jsp">forget-password?</a></p>

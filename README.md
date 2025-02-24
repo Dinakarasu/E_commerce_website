@@ -4,5 +4,12 @@ Welcome to this repository for the website landing page. This project is designe
 ![image alt](https://github.com/Dinakarasu/E_commerce_website/blob/main/home%20with%20login%20page%20.jpeg?raw=true)
 
 ________________________________________________________________________________________________
+Cart page:
 
 ![image alt](https://github.com/Dinakarasu/E_commerce_website/blob/main/cart%20page.jpeg?raw=true)
+
+________________________________________________________________________________________________
+Order page:
+![image alt](https://github.com/Dinakarasu/E_commerce_website/blob/main/order%20page%20.jpeg?raw=true)
+
+________________________________________________________________________________________________
